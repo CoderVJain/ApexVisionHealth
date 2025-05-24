@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Eye } from "lucide-react";
+import { Eye, Home, LayoutGrid, Heart, LineChart, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Healthcare", href: "/healthcare" },
-  { label: "Accounting", href: "/accounting" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/", icon: <Home className="h-5 w-5 mr-3" /> },
+  { label: "Services", href: "/services", icon: <LayoutGrid className="h-5 w-5 mr-3" /> },
+  { label: "Healthcare", href: "/healthcare", icon: <Heart className="h-5 w-5 mr-3" /> },
+  { label: "Accounting", href: "/accounting", icon: <LineChart className="h-5 w-5 mr-3" /> },
+  { label: "Contact", href: "/contact", icon: <Phone className="h-5 w-5 mr-3" /> },
 ];
 
 export default function Navbar() {
@@ -22,11 +22,13 @@ export default function Navbar() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link href="/" className="flex items-center">
-            <Eye className="text-primary text-3xl mr-2" />
-            <span className="text-2xl font-heading font-bold text-neutral-400">
-              Apex<span className="text-primary">Vision</span> MNS
-            </span>
+          <Link href="/">
+            <div className="flex items-center transition-transform hover:scale-105 duration-300">
+              <Eye className="text-primary text-3xl mr-2" />
+              <span className="text-2xl font-heading font-bold text-neutral-400">
+                Apex<span className="text-primary">Vision</span> MNS
+              </span>
+            </div>
           </Link>
         </div>
 
@@ -34,16 +36,16 @@ export default function Navbar() {
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
-              <a
+              <div
                 className={cn(
-                  "py-2 transition-colors",
+                  "py-2 transition-all duration-300 cursor-pointer",
                   location === link.href
                     ? "text-primary font-semibold border-b-2 border-primary"
-                    : "hover:text-primary"
+                    : "hover:text-primary hover:-translate-y-1"
                 )}
               >
                 {link.label}
-              </a>
+              </div>
             </Link>
           ))}
         </div>
@@ -52,26 +54,42 @@ export default function Navbar() {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-primary">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-neutral-400 hover:text-primary hover:bg-primary/5 transition-all duration-300"
+              >
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="p-0">
-              <div className="flex flex-col px-4 py-8">
+            <SheetContent side="right" className="p-0 border-l-primary/20 w-[280px]">
+              <SheetHeader className="px-6 py-4 border-b">
+                <SheetTitle className="text-left text-primary font-heading">Menu</SheetTitle>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute right-4 top-4 text-neutral-400 hover:text-primary hover:bg-primary/5"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </SheetHeader>
+              <div className="flex flex-col py-4">
                 {navLinks.map((link) => (
                   <Link key={link.href} href={link.href}>
-                    <a
+                    <div
                       className={cn(
-                        "py-3 font-medium",
+                        "flex items-center py-3 px-6 transition-all duration-300",
                         location === link.href
-                          ? "text-primary font-semibold"
-                          : "text-neutral-400 hover:text-primary"
+                          ? "text-primary font-semibold bg-primary/5"
+                          : "text-neutral-400 hover:text-primary hover:bg-primary/5"
                       )}
                       onClick={() => setIsOpen(false)}
                     >
+                      {link.icon}
                       {link.label}
-                    </a>
+                    </div>
                   </Link>
                 ))}
               </div>
