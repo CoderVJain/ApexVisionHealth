@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Apex Vision MNS</title>
+    <meta name="description" content="Reach out to our team for more information about our healthcare and accounting services or to schedule a consultation.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles */
+        .contact-header {
+            background: linear-gradient(to right, rgba(30, 136, 229, 0.1), rgba(38, 166, 154, 0.1));
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .contact-content {
+            padding: 5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+        
+        .contact-info p {
+            color: var(--neutral-300);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(30, 136, 229, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-item-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-item-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .contact-form-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form-container h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--neutral-400);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+        }
+        
+        .error-message {
+            color: #e53935;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block;
+            height: 1.25rem;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        .form-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-message i {
+            font-size: 3rem;
+            color: #4caf50;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message p {
+            margin-bottom: 1.5rem;
+            color: var(--neutral-300);
+        }
+        
+        .map-section {
+            background-color: var(--neutral-100);
+            padding: 4rem 0;
+        }
+        
+        .map-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+        }
+        
+        .map-container {
+            height: 400px;
+            background-color: var(--neutral-200);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--neutral-300);
+        }
+        
+        .map-container i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                    <span class="logo-text">
+                        <span class="logo-apex">Apex</span><span class="logo-vision">Vision</span> MNS
+                    </span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="accounting.html">Accounting</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>Menu</span>
+            <button class="close-menu-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-th-large"></i> Services</a></li>
+            <li><a href="healthcare.html"><i class="fas fa-heartbeat"></i> Healthcare</a></li>
+            <li><a href="accounting.html"><i class="fas fa-chart-line"></i> Accounting</a></li>
+            <li><a href="contact.html" class="active"><i class="fas fa-phone"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Contact Header -->
+        <section class="contact-header">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Reach out to our team for more information about our services or to schedule a consultation.</p>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>
+                            We're here to answer any questions you may have about our services. Reach out to us and we'll respond as soon as we can.
+                        </p>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h3>Our Location</h3>
+                                <p>
+                                    123 Business Avenue, Suite 200<br>
+                                    Metropolitan City, State 12345
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h3>Phone</h3>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h3>Email</h3>
+                                <p>info@apexvisionmns.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-item-content">
+                                <h3>Business Hours</h3>
+                                <p>
+                                    Monday - Friday: 9:00 AM - 5:00 PM<br>
+                                    Saturday: 10:00 AM - 2:00 PM<br>
+                                    Sunday: Closed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <h2>Send Us a Message</h2>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="John Doe">
+                                <span id="name-error" class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="johndoe@example.com">
+                                <span id="email-error" class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="(555) 123-4567">
+                                <span id="phone-error" class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service Interested In</label>
+                                <select id="service" class="form-control">
+                                    <option value="">Select a Service</option>
+                                    <option value="healthcare">Healthcare Services</option>
+                                    <option value="accounting">Accounting Services</option>
+                                    <option value="both">Both Services</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                                <span id="service-error" class="error-message"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea id="message" class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                                <span id="message-error" class="error-message"></span>
+                            </div>
+
+                            <button type="submit" class="form-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <h2>Our Location</h2>
+                <div class="map-container">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Interactive map would be displayed here</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fa-regular fa-eye"></i>
+                        <span>
+                            <span class="logo-apex-footer">Apex</span><span class="logo-vision-footer">Vision</span> MNS
+                        </span>
+                    </div>
+                    <p>Providing exceptional healthcare and accounting services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="accounting.html">Accounting</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Avenue, Suite 200</li>
+                        <li><i class="fas fa-envelope"></i> info@apexvisionmns.com</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Apex Vision MNS. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
