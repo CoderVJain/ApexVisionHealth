@@ -8,9 +8,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-6">
           <div className="md:col-span-1">
             <div className="flex items-center mb-3 transform transition-transform hover:scale-105 duration-300">
-              <Eye className="text-white text-xl mr-2" />
+              <div className="relative">
+                <Eye className="text-white h-6 w-6 mr-2 drop-shadow-md" strokeWidth={2.5} />
+                <div className="absolute inset-0 bg-white/20 rounded-full blur-sm -z-10"></div>
+              </div>
               <span className="text-lg font-heading font-bold">
-                Apex<span className="text-accent">Vision</span> MNS
+                <span className="text-white">Apex</span>
+                <span className="text-accent">Vision</span>
+                <span className="text-white"> MNS</span>
               </span>
             </div>
             <p className="text-neutral-200 text-sm mb-3">

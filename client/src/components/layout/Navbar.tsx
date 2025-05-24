@@ -24,9 +24,14 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link href="/">
             <div className="flex items-center transition-transform hover:scale-105 duration-300">
-              <Eye className="text-primary text-3xl mr-2" />
+              <div className="relative">
+                <Eye className="text-primary h-8 w-8 mr-2 drop-shadow-md" strokeWidth={2.5} />
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-sm -z-10"></div>
+              </div>
               <span className="text-2xl font-heading font-bold text-neutral-400">
-                Apex<span className="text-primary">Vision</span> MNS
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Apex</span>
+                <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Vision</span>
+                <span> MNS</span>
               </span>
             </div>
           </Link>
