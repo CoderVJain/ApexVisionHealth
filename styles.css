@@ -1,17 +1,17 @@
 /* Base Styles and Variables */
 :root {
-    /* Primary Colors */
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
-    --primary-light: #60a5fa;
-    --secondary: #22c55e;
-    --accent: #f97316;
+    /* Primary Colors - Golden Theme */
+    --primary: #d4af37;
+    --primary-dark: #b8941f;
+    --primary-light: #e6c55a;
+    --secondary: #00bcd4;
+    --accent: #1a202c;
     
-    /* Neutral Colors */
-    --neutral-100: #f8fafc;
-    --neutral-200: #e2e8f0;
-    --neutral-300: #94a3b8;
-    --neutral-400: #1e293b;
+    /* Neutral Colors - Dark Elegant Theme */
+    --neutral-100: #f7fafc;
+    --neutral-200: #edf2f7;
+    --neutral-300: #718096;
+    --neutral-400: #2d3748;
     
     /* Font Families */
     --font-heading: 'Poppins', sans-serif;
@@ -196,7 +196,7 @@ main {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: rgba(59, 130, 246, 0.15);
+    background-color: rgba(212, 175, 55, 0.15);
     border-radius: 50%;
     filter: blur(4px);
     z-index: -1;
